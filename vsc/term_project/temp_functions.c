@@ -127,7 +127,12 @@ int main(int argc, char **argv)
     printf("lineCount = %d\n", lineCount);
     printf("start: %d\nend: %d\n", start, end);
 
-    calculateStatistics(dataPoints, start, end);
+    // Если месяц указан жёстко, выводим только его
+    if (month != 0)
+        calculateStatistics(dataPoints, start, end);
+    // В ином случае запрашиваем функцию форматированого вывода всех месяцев
+    else
+        printAllYear(dataPoints, start, end);
 
     // Освобождаем выделенную память
     free(dataPoints);
