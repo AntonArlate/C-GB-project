@@ -30,6 +30,7 @@ void printDataPoints(DataPoint* dataPoints, int lineCount); // Печать ма
 void printDataByYear(DataPoint *dataPoints, int size, int year); // Печать за год
 void printDataByMonth(DataPoint *dataPoints, int size, int year, int month); // Печать за месяц
 void calculateStatistics(DataPoint *dataPoints, int start, int end); // Вывод запрошеных данных по ТЗ
+void printAllYear (DataPoint *dataPoints, int start, int end);
 
 // Функции поиска search_and_print_data.c
 bool isValidFormat(char *str, int len);

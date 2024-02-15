@@ -205,6 +205,38 @@ void calculateStatistics(DataPoint *dataPoints, int start, int end)
     printf("Average temperature: %.2f\n", avgTemp);
 }
 
+void printAllYear(DataPoint *dataPoints, int start, int end)
+{
+    int year = dataPoints[start].year;
+    int startMonth = start;
+    int endMonth = start;
+
+    int month = 0;
+    do
+    {
+        month = dataPoints[startMonth].month;
+        printf("----> Month %d <----\n", month);
+        // ищем начало и конец мес€ца
+        while (endMonth < end && dataPoints[startMonth].month == dataPoints[endMonth + 1].month)
+        {
+            endMonth++;
+        }
+
+        // запрашиваем калькул€цию
+        calculateStatistics(dataPoints, startMonth, endMonth);
+
+        // ѕровер€ем что это ещЄ не конец года и переставл€ем указатель на следующий мес€ц
+        if (endMonth < end)
+            startMonth = endMonth + 1;
+        else
+            break;
+
+    } while (month < 12);
+
+    printf("----> All %d year <----\n", year);
+    calculateStatistics(dataPoints, start, end);
+}
+
 bool isValidFormat(char *str, int len)
 {
     for (int i = 0; i < len; i++)
